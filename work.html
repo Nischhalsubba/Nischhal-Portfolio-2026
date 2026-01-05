@@ -1,0 +1,105 @@
+<!-- work.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Projects | Nischhal Raj Subba</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-circle"></div>
+    
+    <!-- Shared Reveal Container -->
+    <div class="hover-reveal"><div class="hover-reveal-inner"></div></div>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                Nischhal<br><span style="color: var(--text-muted);">Raj Subba</span>
+            </a>
+            <nav style="display: flex; align-items: center;">
+                <a href="work.html" class="nav-link" style="color: var(--accent-red);">Work</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container section-pad">
+        <h1 style="margin-top: 4rem; margin-bottom: 2rem; font-size: clamp(4rem, 10vw, 8rem);">Archive</h1>
+        
+        <div style="display: flex; gap: 2rem; margin-bottom: 6rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem;">
+            <button class="filter-btn active" data-filter="all" style="background:none; border:none; color:white; font-family: var(--font-display); font-size: 1.5rem; text-transform: uppercase; cursor: pointer;">All</button>
+            <button class="filter-btn" data-filter="fintech" style="background:none; border:none; color:var(--text-muted); font-family: var(--font-display); font-size: 1.5rem; text-transform: uppercase; cursor: pointer;">Fintech</button>
+            <button class="filter-btn" data-filter="web3" style="background:none; border:none; color:var(--text-muted); font-family: var(--font-display); font-size: 1.5rem; text-transform: uppercase; cursor: pointer;">Web3</button>
+        </div>
+
+        <div class="project-list">
+            <!-- Full Project List -->
+            <a href="case-morajaa.html" class="project-row" data-category="fintech" data-img="https://placehold.co/800x1000/222/FFF?text=Morajaa">
+                <div class="project-year">2024</div>
+                <h3 class="project-title">Morajaa</h3>
+                <div class="project-cat">GovTech</div>
+            </a>
+            
+            <a href="case-orkest.html" class="project-row" data-category="fintech" data-img="https://placehold.co/800x1000/222/FFF?text=Orkest">
+                <div class="project-year">2025</div>
+                <h3 class="project-title">Orkest</h3>
+                <div class="project-cat">SaaS Platform</div>
+            </a>
+            
+            <a href="case-yarsha.html" class="project-row" data-category="web3" data-img="https://placehold.co/800x1000/222/FFF?text=Yarsha">
+                <div class="project-year">2024</div>
+                <h3 class="project-title">Yarsha</h3>
+                <div class="project-cat">Crypto Chat</div>
+            </a>
+            
+            <a href="case-mas-datahub.html" class="project-row" data-category="fintech" data-img="https://placehold.co/800x1000/222/FFF?text=DataHub">
+                <div class="project-year">2023</div>
+                <h3 class="project-title">MAS DataHub</h3>
+                <div class="project-cat">Enterprise</div>
+            </a>
+            
+            <a href="#" class="project-row" data-category="fintech" data-img="https://placehold.co/800x1000/222/FFF?text=GreenTaste">
+                <div class="project-year">2023</div>
+                <h3 class="project-title">Green Taste</h3>
+                <div class="project-cat">E-Commerce</div>
+            </a>
+            
+            <a href="#" class="project-row" data-category="web3" data-img="https://placehold.co/800x1000/222/FFF?text=Blinex">
+                <div class="project-year">2022</div>
+                <h3 class="project-title">Blinex</h3>
+                <div class="project-cat">Exchange UI</div>
+            </a>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="assets/main.js"></script>
+    <script>
+        // Simple Filter Logic Inline
+        const buttons = document.querySelectorAll('.filter-btn');
+        const rows = document.querySelectorAll('.project-row');
+        
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active state
+                buttons.forEach(b => { b.style.color = 'var(--text-muted)'; b.classList.remove('active'); });
+                btn.style.color = 'white'; btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                rows.forEach(row => {
+                    if(filter === 'all' || row.dataset.category === filter) {
+                        row.style.display = 'grid';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+    <script src="assets/animations.js"></script>
+</body>
+</html>
