@@ -1,0 +1,36 @@
+# Nischhal Raj Subba Portfolio 2026
+
+This repository contains a cinematic static portfolio concept for Nischhal Raj Subba, a product designer working across UX, digital products, web experiences, design systems, and design-led frontend implementation.
+
+## Verified portfolio direction
+
+- Product design
+- UI and UX design
+- Website and landing-page design
+- Design systems and interface consistency
+- Design-to-code collaboration
+- Product strategy and user-centered problem solving
+- Frontend implementation for design prototypes
+
+## Known real project context
+
+The maintainer's established project history includes work connected to MAS DataHub, Yarsha, Morajaa, Zapp Today, Idealaya, Mokshya Protocol, Tegzy, ESR Tech, ThemeGrill, Gurzu, and Diagonal Softwares. Only projects with approved descriptions, screenshots, links, and attribution should be published as portfolio case studies.
+
+## Technical summary
+
+- Vite 6
+- Static HTML and custom CSS
+- Vanilla JavaScript
+- GSAP and ScrollTrigger motion
+- Responsive editorial portfolio layout
+- Reduced-motion and touch-aware cursor behavior
+
+## Repository
+
+https://github.com/Nischhalsubba/Nischhal-Portfolio-2026
+
+## Content integrity note
+
+The current interface contains placeholder logos, project names, awards, metrics, testimonials, and navigation targets. These must not be interpreted as verified client relationships, awards, employment claims, or approved case studies unless supported by evidence and explicit permission.
+
+Before public launch, replace placeholder content with accurate project history, real links, approved testimonials, and verified attribution.
