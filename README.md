@@ -1,5 +1,89 @@
 # Nischhal Portfolio 2026
 
+<!-- interactive-readme-standard:start -->
+
+> [!NOTE]
+> **Branch-specific documentation:** this section is maintained for [`main`](https://github.com/Nischhalsubba/Nischhal-Portfolio-2026/tree/main). It is generated from the files present on this branch and preserves the project-authored README below.
+
+<details open>
+<summary><strong>Interactive repository guide</strong></summary>
+
+## Branch overview
+
+| Item | Value |
+|---|---|
+| Repository | [`Nischhalsubba/Nischhal-Portfolio-2026`](https://github.com/Nischhalsubba/Nischhal-Portfolio-2026) |
+| Branch | [`main`](https://github.com/Nischhalsubba/Nischhal-Portfolio-2026/tree/main) |
+| Detected stack | Vite, TypeScript, Sass, JavaScript, HTML, CSS |
+| Detected manifests | package.json |
+| Documentation policy | Every maintained branch must explain purpose, setup, structure, architecture, flows, testing, delivery, security, and ownership. |
+
+## Repository structure
+
+```mermaid
+flowchart TD
+    ROOT["Nischhal-Portfolio-2026 / main"]
+    ROOT --> P0[".github/"]
+    ROOT --> P1["assets/"]
+    ROOT --> P2["components/"]
+    ROOT --> P3["js/"]
+    ROOT --> P4["public/"]
+    ROOT --> P5["scss/"]
+    ROOT --> P6[".gitignore"]
+    ROOT --> P7["index.html"]
+    ROOT --> P8["index.tsx"]
+    ROOT --> P9["metadata.json"]
+    ROOT --> P10["package.json"]
+    ROOT --> P11["tsconfig.json"]
+    ROOT --> P12["vite.config.ts"]
+    ROOT --> P13["work.html"]
+```
+
+The diagram is generated from the branch's actual top-level files and directories. Use the branch link above for complete source navigation.
+
+## Website or application structure
+
+```mermaid
+flowchart TD
+    APP["Nischhal-Portfolio-2026"]
+    APP --> R0["public"]
+```
+
+## Application and responsibility flow
+
+```mermaid
+flowchart LR
+    ACTOR["User / contributor"]
+    ACTOR --> A0["Interface: public, components"]
+    A0 --> A1["Delivery: .github"]
+    A1 --> DELIVERY["Delivery: GitHub Actions"]
+```
+
+## Change-to-delivery flow
+
+```mermaid
+flowchart LR
+    CHANGE["Change on main"]
+    CHECK["Validate: npm run dev, npm run build, npm run preview"]
+    REVIEW["Review documentation and architecture impact"]
+    RELEASE["Merge, release, or deploy according to this branch"]
+    CHANGE --> CHECK --> REVIEW --> RELEASE
+```
+
+## README requirements for this branch
+
+- Explain what this branch contains and how it differs from the default branch.
+- Keep installation, configuration, usage, testing, deployment, security, support, and license information accurate.
+- Document repository, website or application, API, data, authentication, background-job, and deployment flows when they exist.
+- Prefer Mermaid diagrams and expandable `<details>` sections for visual navigation.
+- Link diagrams and modules to real source paths; never invent missing components.
+- Preserve project-specific documentation and update diagrams whenever architecture or major paths change.
+- Treat secrets, private infrastructure, customer data, and credentials as prohibited README content.
+
+</details>
+
+<!-- interactive-readme-standard:end -->
+
 > A cinematic, dark-theme personal portfolio concept for **Nischhal Raj Subba** — designed from a product designer's point of view and implemented as a lightweight static front-end experience.
 
 [![Built with Vite](https://img.shields.io/badge/Built%20with-Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
