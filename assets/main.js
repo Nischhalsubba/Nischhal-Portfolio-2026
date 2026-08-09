@@ -3,11 +3,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 0. SIGNAL OVER NOISE ---
     const signalAnchor = document.querySelector('.home__intro-service');
     if (signalAnchor && !document.querySelector('[data-signal-system]')) {
-        if (!document.querySelector('link[data-signal-style]')) {
-            const signalStyle = document.createElement('link');
+        const refreshSignalLayout = () => {
+            window.requestAnimationFrame(() => window.ScrollTrigger?.refresh());
+        };
+
+        let signalStyle = document.querySelector('link[data-signal-style]');
+        if (!signalStyle) {
+            signalStyle = document.createElement('link');
             signalStyle.rel = 'stylesheet';
             signalStyle.href = 'assets/signal.css';
             signalStyle.dataset.signalStyle = 'true';
+            signalStyle.addEventListener('load', refreshSignalLayout, { once: true });
             document.head.appendChild(signalStyle);
         }
 
@@ -76,7 +82,11 @@ document.addEventListener('DOMContentLoaded', () => {
             particleLayer.innerHTML = particles.map(([x,y,s]) => `<i class="signal-particle" style="--x:${x}%;--y:${y}%;--s:${s}px"></i>`).join('');
         }
 
-        const startSignal = () => window.initSignalSystem?.();
+        const startSignal = () => {
+            window.initSignalSystem?.();
+            refreshSignalLayout();
+            window.setTimeout(refreshSignalLayout, 120);
+        };
         if (window.initSignalSystem) {
             startSignal();
         } else if (!document.querySelector('script[data-signal-script]')) {
