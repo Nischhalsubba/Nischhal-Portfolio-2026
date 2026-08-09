@@ -1,7 +1,8 @@
 /* Interactive Signal over Noise section */
-document.addEventListener('DOMContentLoaded', () => {
+window.initSignalSystem = () => {
   const root = document.querySelector('[data-signal-system]');
-  if (!root || !window.gsap || !window.ScrollTrigger) return;
+  if (!root || !window.gsap || !window.ScrollTrigger || root.dataset.signalReady === 'true') return;
+  root.dataset.signalReady = 'true';
 
   const { gsap, ScrollTrigger } = window;
   gsap.registerPlugin(ScrollTrigger);
@@ -50,7 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let lockedState = null;
   let signalMode = false;
-
   const mm = gsap.matchMedia();
 
   const setInsight = (state) => {
@@ -59,11 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     insightKicker.textContent = meaning.kicker;
     insightTitle.textContent = meaning.title;
     insightCopy.textContent = meaning.copy;
-    gsap.fromTo(
-      insight,
-      { y: 10, autoAlpha: 0 },
-      { y: 0, autoAlpha: 1, duration: 0.26, ease: 'power3.out', overwrite: 'auto' },
-    );
+    gsap.fromTo(insight, { y: 10, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.26, ease: 'power3.out', overwrite: 'auto' });
   };
 
   const updateConnector = (node) => {
@@ -72,22 +68,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!x || !y) return;
     connector.setAttribute('x2', x);
     connector.setAttribute('y2', y);
-    gsap.fromTo(
-      connector,
-      { autoAlpha: 0, strokeDashoffset: 4 },
-      { autoAlpha: 1, strokeDashoffset: 0, duration: 0.24, ease: 'power3.out', overwrite: 'auto' },
-    );
+    gsap.fromTo(connector, { autoAlpha: 0, strokeDashoffset: 4 }, { autoAlpha: 1, strokeDashoffset: 0, duration: 0.24, ease: 'power3.out', overwrite: 'auto' });
   };
 
   const highlightConcept = (state) => {
     conceptSpans.forEach((span) => {
-      gsap.to(span, {
-        color: span.dataset.signalConcept === state ? '#ff6a21' : '',
-        duration: 0.18,
-        ease: 'power2.out',
-        overwrite: 'auto',
-        clearProps: span.dataset.signalConcept === state ? '' : 'color',
-      });
+      if (span.dataset.signalConcept === state) {
+        gsap.to(span, { color: '#ff6a21', duration: 0.18, ease: 'power2.out', overwrite: 'auto' });
+      } else {
+        gsap.to(span, { color: '', duration: 0.16, clearProps: 'color', overwrite: 'auto' });
+      }
     });
   };
 
@@ -97,20 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (lock) lockedState = lockedState === state ? null : state;
 
     stateNodes.forEach((candidate) => candidate.classList.toggle('is-active', candidate === node));
-    gsap.to(stateNodes, {
-      autoAlpha: 0.42,
-      scale: 0.94,
-      duration: 0.2,
-      ease: 'power2.out',
-      overwrite: 'auto',
-    });
-    gsap.to(node, {
-      autoAlpha: 1,
-      scale: 1.22,
-      duration: 0.18,
-      ease: 'power3.out',
-      overwrite: 'auto',
-    });
+    gsap.to(stateNodes, { autoAlpha: 0.42, scale: 0.94, duration: 0.2, ease: 'power2.out', overwrite: 'auto' });
+    gsap.to(node, { autoAlpha: 1, scale: 1.22, duration: 0.18, ease: 'power3.out', overwrite: 'auto' });
     gsap.to(reasoning, {
       x: state === 'logic' || state === 'state' ? -10 : -3,
       autoAlpha: state === 'logic' || state === 'state' ? 0.4 : 0.2,
@@ -118,11 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ease: 'power3.out',
       overwrite: 'auto',
     });
-    gsap.to(orbitMain, {
-      stroke: 'rgba(255, 112, 38, 1)',
-      duration: 0.2,
-      overwrite: 'auto',
-    });
+    gsap.to(orbitMain, { stroke: 'rgba(255, 112, 38, 1)', duration: 0.2, overwrite: 'auto' });
     updateConnector(node);
     setInsight(state);
     highlightConcept(state);
@@ -150,26 +124,14 @@ document.addEventListener('DOMContentLoaded', () => {
     signalButton.classList.toggle('is-active', on);
     signalButton.setAttribute('aria-pressed', String(on));
 
-    gsap.to(decorativeDots, {
-      autoAlpha: on ? 0.14 : 0.68,
-      duration: 0.34,
-      stagger: on ? 0.006 : 0,
-      ease: 'power2.out',
-      overwrite: 'auto',
-    });
+    gsap.to(decorativeDots, { autoAlpha: on ? 0.14 : 0.68, duration: 0.34, stagger: on ? 0.006 : 0, ease: 'power2.out', overwrite: 'auto' });
     gsap.to(portrait, {
       filter: on ? 'grayscale(1) contrast(1.08) brightness(.56) sepia(.08)' : 'grayscale(1) contrast(1.08) brightness(.72) sepia(.08)',
       duration: 0.34,
       ease: 'power2.out',
       overwrite: 'auto',
     });
-    gsap.to(reasoning, {
-      x: on ? -8 : 12,
-      autoAlpha: on ? 0.36 : 0.08,
-      duration: 0.42,
-      ease: 'power3.out',
-      overwrite: 'auto',
-    });
+    gsap.to(reasoning, { x: on ? -8 : 12, autoAlpha: on ? 0.36 : 0.08, duration: 0.42, ease: 'power3.out', overwrite: 'auto' });
     gsap.to(orbitMain, {
       stroke: on ? 'rgba(255, 112, 38, 1)' : 'rgba(239, 106, 44, .76)',
       strokeWidth: on ? 0.3 : 0.18,
@@ -177,21 +139,8 @@ document.addEventListener('DOMContentLoaded', () => {
       ease: 'power2.out',
       overwrite: 'auto',
     });
-    gsap.to(halo, {
-      scale: on ? 1.55 : 1,
-      autoAlpha: on ? 0.84 : 0.46,
-      transformOrigin: 'center',
-      duration: 0.26,
-      ease: 'power3.out',
-      overwrite: 'auto',
-    });
-    gsap.to(thesis, {
-      y: on ? 0 : 10,
-      autoAlpha: on ? 1 : 0,
-      duration: on ? 0.42 : 0.18,
-      ease: on ? 'power3.out' : 'power2.in',
-      overwrite: 'auto',
-    });
+    gsap.to(halo, { scale: on ? 1.55 : 1, autoAlpha: on ? 0.84 : 0.46, transformOrigin: 'center', duration: 0.26, ease: 'power3.out', overwrite: 'auto' });
+    gsap.to(thesis, { y: on ? 0 : 10, autoAlpha: on ? 1 : 0, duration: on ? 0.42 : 0.18, ease: on ? 'power3.out' : 'power2.in', overwrite: 'auto' });
     if (!lockedState) resetState();
   };
 
@@ -207,11 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!reduce) {
         const entrance = gsap.timeline({
           defaults: { ease: 'power3.out' },
-          scrollTrigger: {
-            trigger: root,
-            start: 'top 72%',
-            once: true,
-          },
+          scrollTrigger: { trigger: root, start: 'top 72%', once: true },
         });
         entrance
           .fromTo(root.querySelector('.signal-grid-layer'), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.46 })
@@ -280,4 +225,4 @@ document.addEventListener('DOMContentLoaded', () => {
     setSignalMode(false);
     resetState();
   });
-});
+};
