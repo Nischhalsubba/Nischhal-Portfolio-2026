@@ -71,3 +71,8 @@ Use accurate terms such as **product designer, UX designer, interaction design, 
 flowchart LR
     UPDATE["Project / portfolio update"] --> VERIFY["Verify claims / assets"] --> BUILD["Implement"] --> REVIEW["Responsive + accessibility review"] --> SEO["Metadata / links check"] --> PR["Pull request"]
 ```
+
+
+## GitHub Pages (root-level sources)
+
+`index.html`, `package.json`, `vite.config.ts`, `assets/`, and component sources are now at the repository root. Run `npm install && npm run build` from root; the GitHub Actions workflow publishes the generated `dist/` directory. The Vite `base` setting remains `/Nischhal-Portfolio-2026/` to keep GitHub Pages project URLs working. The former nested-site README is preserved in `docs/legacy-site-readme.md`.
