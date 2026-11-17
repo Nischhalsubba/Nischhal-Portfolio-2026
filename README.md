@@ -50,12 +50,17 @@ flowchart TD
 
 ## Getting started
 
+The Vite frontend is maintained at the repository root, with scripts in `package.json`.
+
 ```bash
 git clone https://github.com/Nischhalsubba/Nischhal-Portfolio-2026.git
 cd Nischhal-Portfolio-2026
+npm install
+npm run dev
 ```
 
-Use the manifests and lockfiles committed in the repository to determine the current runtime and commands.
+Use `npm run build` to verify a production build and `npm run preview` to inspect the built site locally.
+
 
 ## Portfolio quality
 
